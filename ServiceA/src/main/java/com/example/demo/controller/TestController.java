@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
+import brave.sampler.Sampler;
 import com.example.demo.feign.MyFeignClient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +23,7 @@ public class TestController {
 
     @GetMapping("/feignTest")
     public String getFeignResult(){
-        log.info("get request  in /feignTest ");
+        log.info("get request  in /feignTest");
         String result=null;
         try {
             result= myFeignClient.getFeignResult();
@@ -30,5 +32,10 @@ public class TestController {
         }
 
         return  result;
+    }
+
+    @Bean
+    public Sampler defaultSampler() {
+        return Sampler.ALWAYS_SAMPLE;
     }
 }
