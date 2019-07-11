@@ -1,10 +1,12 @@
 package com.example.demo.controller;
 
 import brave.sampler.Sampler;
+import com.ctrip.framework.apollo.Config;
+import com.ctrip.framework.apollo.spring.annotation.ApolloConfig;
 import com.example.demo.feign.MyFeignClient;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,19 @@ import javax.annotation.Resource;
 public class TestController {
     @Resource
     private MyFeignClient myFeignClient;
+
+
+    @Value("${test}")
+    public String test;
+
+
+    @GetMapping("/testApollo")
+    public String testApollo() {
+        System.out.println("线程池名称: " + Thread.currentThread().getName());
+        System.out.println(test);
+        return "done";
+    }
+
 
     @GetMapping("/hello")
     public String sayHello(){
