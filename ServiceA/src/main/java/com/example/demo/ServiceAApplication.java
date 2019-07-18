@@ -15,10 +15,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableHystrix
 @EnableHystrixDashboard
 @EnableApolloConfig
-public class DemoApplication {
+public class ServiceAApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(ServiceAApplication.class, args);
     }
 
 }
