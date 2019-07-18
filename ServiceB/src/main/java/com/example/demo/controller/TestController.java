@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/hello2")
-    public String sayHello(){
+    public String sayHello2(){
         return "hello2";
+    }
+
+    @GetMapping("/hello")
+    public String sayHello(){
+        return "hello service-clientB";
     }
 
     @Bean
