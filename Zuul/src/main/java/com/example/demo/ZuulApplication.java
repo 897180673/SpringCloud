@@ -16,10 +16,10 @@ import org.springframework.context.annotation.Primary;
 @EnableZuulProxy
 @EnableEurekaClient
 @EnableApolloConfig
-public class DemoApplication {
+public class ZuulApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(ZuulApplication.class, args);
     }
 
     @RefreshScope
